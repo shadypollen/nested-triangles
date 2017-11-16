@@ -41,6 +41,8 @@ def triangleGenerator(triangleWidth, nestLevel):
 		triangleRow = []
 		triangleWidth = (triangleWidth*2)+1
 	printTriangle(triangleList)
+	if nestLevel > 1:
+		joinTriangle(triangleList, nestLevel)
 
 
 def printTriangle(triangleList):
@@ -49,8 +51,31 @@ def printTriangle(triangleList):
 		for row in triangle:
 			print("".join(row))
 
-def joinTriangle():
-	pass
-	#use nested .center with alternating characters 
-	#to implement joining triangles
+def joinTriangle(triangleList, nestLevel):
+	triOneIndex = 0
+	triTwoIndex = 1
+	resultTriangle = []
+	triangleOne = triangleList[triOneIndex]
+	triangleTwo = triangleList[triTwoIndex]	
+	counter = 0
+	for row in reversed(triangleOne):
+		interTri = []
+		nestRow = list(reversed(triangleTwo))[counter]
+		nestInterRow = nestRow.replace(" ", "")
+		nestingRow = row.replace(" ", "")
+		nestChar = nestInterRow[0][0]
+		interTri.append(nestingRow.center(len(nestInterRow), nestChar))
+		resultTriangle.append(interTri[0].center(len(nestRow), " "))
+		interTri = []			
+		counter = counter + 1
+	nestEnd = len(resultTriangle)
+	for row in reversed(triangleTwo[:nestEnd]):
+		resultTriangle.append(row)
+	print("Result triangle:")
+	for row in reversed(resultTriangle):
+		print(row)
+#	triOneIndex = triOneIndex + 1
+#	triTwoIndex = triTwoIndex + 1
+	
+	
 main()
