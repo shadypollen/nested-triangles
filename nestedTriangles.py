@@ -1,11 +1,4 @@
 def main():
-#	print("Please enter 2 characters with which to draw the triangle")
-#	print("Examples: \".*\", \"$!\", \"ab\"")
-#	charString = str(input("> "))
-#	charString = list(charString)
-#	if len(charString) != 2:
-#		print("Incorrect input. Try again.\n")
-#		main()
 	while True:
 		print("Please enter the width of the innermost triangle")
 		print("The value must be an odd positive integer")
