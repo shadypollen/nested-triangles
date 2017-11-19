@@ -1,3 +1,5 @@
+# Nested Triangle Generator
+
 <pre>
 *******************************.*******************************
  *****************************...***************************** 
@@ -32,8 +34,6 @@
                               ***                              
                                *                               
 </pre>
-
-# Nested Triangle Generator
 
 This is a simple Python 3 script that generates nested triangles. 
 
