@@ -43,7 +43,6 @@ def triangleGenerator(triangleWidth, nestLevel):
 		
 		triangleRow = []
 		triangleWidth = (triangleWidth*2)+1
-	printTriangle(triangleList)
 	if nestLevel > 1:
 		joinTriangle(triangleList, nestLevel)
 
