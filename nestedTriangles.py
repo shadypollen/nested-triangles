@@ -55,6 +55,7 @@ def printTriangle(triangleList):
 		for row in triangle:
 			print("".join(row))
 
+#Generates nested triangles
 def joinTriangle(triangleList, nestLevel):
 	triOneIndex = 0
 	triTwoIndex = 1
@@ -64,7 +65,6 @@ def joinTriangle(triangleList, nestLevel):
 		triangleOne = triangleList[triOneIndex]
 		triangleTwo = triangleList[triTwoIndex]	
 		counter = 0
-
 		if level % 2 == 0:
 			triangleOne = list(reversed(triangleOne))
 		for row in triangleOne:
@@ -94,43 +94,6 @@ def joinTriangle(triangleList, nestLevel):
 		for row in triangleList[resultIndex]:
 			print(row)
 		
-	
-#		if level % 2 == 0:
-#			for row in reversed(triangleOne):
-#				interTri = []
-#				nestRow = list(reversed(triangleTwo))[counter]
-#				nestInterRow = nestRow.replace(" ", "")
-#				nestingRow = row.replace(" ", "")
-#				nestChar = nestInterRow[0][0]
-#				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
-#				resultTriangle.append(interTri[0].center(len(nestRow), " "))	
-#				counter = counter + 1
-#			nestEnd = len(resultTriangle)
-#			for row in reversed(triangleTwo[:nestEnd]):
-#				resultTriangle.append(row)
-#			print("Level {0} nest:".format(level+2))
-#			for row in reversed(resultTriangle):
-#				print(row)
-#			triangleList[resultIndex] = reversed(resultTriangle)
-#		else:
-#			for row in triangleOne:
-#				interTri = []
-#				nestRow = list(triangleTwo)[counter]
-#				nestInterRow = nestRow.replace(" ", "")
-#				nestingRow = row.replace(" ", "")
-#				nestChar = nestInterRow[0][0]
-#				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
-#				resultTriangle.append(interTri[0].center(len(nestRow), " "))
-#				counter = counter + 1
-#			nestEnd = len(resultTriangle)
-#			for row in triangleTwo[nestEnd:]:
-#				resultTriangle.append(row)
-#			print("Level {0} nest:".format(level+2))
-#			for row in resultTriangle:
-#				print(row)
-#			triangleList[resultIndex] = resultTriangle
-
-
 		triangleList[level] = list(reversed(resultTriangle))
 		triOneIndex = triOneIndex + 1
 		triTwoIndex = triTwoIndex + 1
