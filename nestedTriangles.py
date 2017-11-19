@@ -10,7 +10,7 @@ def main():
 				print("The number is either even or negative")
 				print("\n")
 		except ValueError:
-		    print("\n")
+			print("\n")
 
 	print("Enter the triangle nesting level:")
 	nestLevel = int(input("> "))
@@ -59,49 +59,78 @@ def joinTriangle(triangleList, nestLevel):
 	triOneIndex = 0
 	triTwoIndex = 1
 	resultIndex = 1
-
 	for level in range(nestLevel-1):
 		resultTriangle = []
 		triangleOne = triangleList[triOneIndex]
 		triangleTwo = triangleList[triTwoIndex]	
 		counter = 0
-		print("level:", level, "resultIndex", resultIndex)
+
 		if level % 2 == 0:
-			for row in reversed(triangleOne):
-				interTri = []
+			triangleOne = list(reversed(triangleOne))
+		for row in triangleOne:
+			interTri = []
+			if level % 2 == 0:
 				nestRow = list(reversed(triangleTwo))[counter]
-				nestInterRow = nestRow.replace(" ", "")
-				nestingRow = row.replace(" ", "")
-				nestChar = nestInterRow[0][0]
-				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
-				resultTriangle.append(interTri[0].center(len(nestRow), " "))
-				interTri = []			
-				counter = counter + 1
-			nestEnd = len(resultTriangle)
-			for row in reversed(triangleTwo[:nestEnd]):
-				resultTriangle.append(row)
-			print("Result triangle:")
-			for row in reversed(resultTriangle):
-				print(row)
-			triangleList[resultIndex] = reversed(resultTriangle)
-		else:
-			for row in triangleOne:
-				interTri = []
+			else:
 				nestRow = list(triangleTwo)[counter]
-				nestInterRow = nestRow.replace(" ", "")
-				nestingRow = row.replace(" ", "")
-				nestChar = nestInterRow[0][0]
-				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
-				resultTriangle.append(interTri[0].center(len(nestRow), " "))
-				interTri = []
-				counter = counter + 1
-			nestEnd = len(resultTriangle)
-			for row in triangleTwo[nestEnd:]:
-				resultTriangle.append(row)
-			print("Result triangle odd:")
-			for row in resultTriangle:
-				print(row)
+			nestInterRow = nestRow.replace(" ", "")
+			nestingRow = row.replace(" ", "")
+			nestChar = nestInterRow[0][0]
+			interTri.append(nestingRow.center(len(nestInterRow), nestChar))
+			resultTriangle.append(interTri[0].center(len(nestRow), " "))	
+			counter = counter + 1
+		nestEnd = len(resultTriangle)
+		if level % 2 == 0:
+			tail = reversed(triangleTwo[:nestEnd])
+		else:
+			tail = triangleTwo[nestEnd:]
+		for row in tail:
+			resultTriangle.append(row)
+		print("Level {0} nest:".format(level+2))
+		if level % 2 == 0:
+			triangleList[resultIndex] = list(reversed(resultTriangle))
+		else:
 			triangleList[resultIndex] = resultTriangle
+		for row in triangleList[resultIndex]:
+			print(row)
+		
+	
+#		if level % 2 == 0:
+#			for row in reversed(triangleOne):
+#				interTri = []
+#				nestRow = list(reversed(triangleTwo))[counter]
+#				nestInterRow = nestRow.replace(" ", "")
+#				nestingRow = row.replace(" ", "")
+#				nestChar = nestInterRow[0][0]
+#				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
+#				resultTriangle.append(interTri[0].center(len(nestRow), " "))	
+#				counter = counter + 1
+#			nestEnd = len(resultTriangle)
+#			for row in reversed(triangleTwo[:nestEnd]):
+#				resultTriangle.append(row)
+#			print("Level {0} nest:".format(level+2))
+#			for row in reversed(resultTriangle):
+#				print(row)
+#			triangleList[resultIndex] = reversed(resultTriangle)
+#		else:
+#			for row in triangleOne:
+#				interTri = []
+#				nestRow = list(triangleTwo)[counter]
+#				nestInterRow = nestRow.replace(" ", "")
+#				nestingRow = row.replace(" ", "")
+#				nestChar = nestInterRow[0][0]
+#				interTri.append(nestingRow.center(len(nestInterRow), nestChar))
+#				resultTriangle.append(interTri[0].center(len(nestRow), " "))
+#				counter = counter + 1
+#			nestEnd = len(resultTriangle)
+#			for row in triangleTwo[nestEnd:]:
+#				resultTriangle.append(row)
+#			print("Level {0} nest:".format(level+2))
+#			for row in resultTriangle:
+#				print(row)
+#			triangleList[resultIndex] = resultTriangle
+
+
 		triangleList[level] = list(reversed(resultTriangle))
 		triOneIndex = triOneIndex + 1
 		triTwoIndex = triTwoIndex + 1
