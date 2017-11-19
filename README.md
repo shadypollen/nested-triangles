@@ -1,3 +1,4 @@
+Format: ![Nested Triangles Logo](/logo.png)
 # Nested triangles generator
 
 This is a simple Python 3 script that generates nested triangles. 
